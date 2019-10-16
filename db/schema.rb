@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_232744) do
+ActiveRecord::Schema.define(version: 2019_10_15_000955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -257,6 +257,14 @@ ActiveRecord::Schema.define(version: 2019_10_02_232744) do
     t.index ["organization_id"], name: "index_partners_on_organization_id"
   end
 
+  create_table "pickup_days", force: :cascade do |t|
+    t.datetime "scheduled_for"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_pickup_days_on_organization_id"
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.string "purchased_from"
     t.text "comment"
@@ -364,6 +372,7 @@ ActiveRecord::Schema.define(version: 2019_10_02_232744) do
   add_foreign_key "donations", "manufacturers"
   add_foreign_key "donations", "storage_locations"
   add_foreign_key "manufacturers", "organizations"
+  add_foreign_key "pickup_days", "organizations"
   add_foreign_key "requests", "organizations"
   add_foreign_key "requests", "partners"
 end

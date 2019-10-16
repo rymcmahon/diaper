@@ -153,6 +153,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :pickup_days
+
     get "dashboard", to: "dashboard#index"
     get "csv", to: "data_exports#csv"
   end

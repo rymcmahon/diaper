@@ -74,6 +74,11 @@
           <i class="fa fa-calendar-o"></i> <span>Pick Ups</span>
         <% end %>
       </li>
+      <li class="<%= 'active' if current_page?(pickup_days_path) %>">
+        <%= link_to(pickup_days_path) do %>
+          <i class="fa fa-calendar-check-o"></i> <span>Pick Up Schedule</span>
+        <% end %>
+      </li>
       <li class="<%= active_class(['items','barcode_items','storage_locations','adjustments','transfers']) %> treeview">
         <a href="#">
           <i class="fa fa-pie-chart"></i>
