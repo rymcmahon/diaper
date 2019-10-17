@@ -48,6 +48,7 @@ class Organization < ApplicationRecord
   has_many :vendors, dependent: :destroy
   has_many :storage_locations, dependent: :destroy
   has_many :inventory_items, through: :storage_locations
+  has_many :pickup_days
   has_many :items, dependent: :destroy do
     def other
       where(partner_key: "other")

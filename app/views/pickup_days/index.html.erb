@@ -1,2 +1,17 @@
-<h1>Pickup Days</h1>
+<section class="content-header">
+    <% content_for :title, "Pickup Schedule - #{current_organization.name}" %>
+    <h1>
+    Pickup Schedule
+        <small>for <%= current_organization.name %></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><%= link_to(dashboard_path) do %>
+            <i class="fa fa-dashboard"></i> Home
+            <% end %>
+        </li>
+        <li><a href="#">Pickup Schedule</a></li>
+    </ol>
+</section>
+
+
 <%= link_to "Add Pickup Day", new_pickup_day_path %>
