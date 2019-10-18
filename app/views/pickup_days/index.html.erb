@@ -13,5 +13,43 @@
     </ol>
 </section>
 
-
-<%= link_to "Add Pickup Day", new_pickup_day_path %>
+<!-- Main content -->
+<section class="content">
+<div class="box">
+    <div class="box-header with-border bg-gray">
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Starts At</th>
+                  <th>Ends At</th>
+                  <th class="pull-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @pickup_days.each do |pickup_day| %>
+                  <tr>
+                    <td><%=  pickup_day.scheduled_for.strftime("%A, %B %e, %Y") %></td>
+                    <td><%=  pickup_day.starts_at.strftime("%l:%M %p") %> </td>
+                    <td><%=  pickup_day.ends_at.strftime("%l:%M %p") %> </td>
+                    <td class="text-right">
+                    <%= link_to "Edit", edit_pickup_day_path(pickup_day.id), class: "btn btn-primary btn-xs" %>
+                      <%=%>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div><!-- /.box-body.table-responsive -->
+        </div><!-- /.col-xs-12 -->
+      </div><!-- /.row -->
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+  <%= link_to "Add Pickup Day", new_pickup_day_path, class: "btn btn-primary btn-sm" %>
+</section><!-- /.content -->
