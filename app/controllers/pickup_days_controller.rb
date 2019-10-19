@@ -7,6 +7,10 @@ class PickupDaysController < ApplicationController
     @pickup_day = current_organization.pickup_days.new
   end
 
+  def edit
+    @pickup_day = current_organization.pickup_days.find(params[:id])
+  end
+
   def create
     @pickup_day = current_organization.pickup_days.new(pickup_day_params)
 
@@ -17,16 +21,16 @@ class PickupDaysController < ApplicationController
     end
   end
 
-  def edit
-    @pickup_day = current_organization.pickup_days.find(params[:id])
-  end
 
   def update
 
   end
 
-  def delete
+  def destroy
+    @pickup_day = current_organization.pickup_days.find(params[:id])
+    @pickup_day.destroy
 
+    redirect_to pickup_days_path
   end
 
   private

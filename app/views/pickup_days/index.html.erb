@@ -39,8 +39,8 @@
                     <td><%=  pickup_day.starts_at.strftime("%l:%M %p") %> </td>
                     <td><%=  pickup_day.ends_at.strftime("%l:%M %p") %> </td>
                     <td class="text-right">
-                    <%= link_to "Edit", edit_pickup_day_path(pickup_day.id), class: "btn btn-primary btn-xs" %>
-                      <%=%>
+                    <%= edit_button_to edit_pickup_day_path(pickup_day.id) %>
+                    <%= delete_button_to pickup_day_path(pickup_day.id), { confirm: "Are you sure? This will delete the pickup day forever." } %>
                     </td>
                   </tr>
                 <% end %>
