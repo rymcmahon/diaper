@@ -1,8 +1,32 @@
-<h1>New Pickup Day</h1>
+<section class="content-header">
+    <% content_for :title, "Create Pickup Day - #{current_organization.name}" %>
+    <h1>
+    Create Pickup Day
+        <small>for <%= current_organization.name %></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><%= link_to(dashboard_path) do %>
+            <i class="fa fa-dashboard"></i> Home
+            <% end %>
+        </li>
+        <li><a href="#">Create Pickup Day</a></li>
+    </ol>
+</section>
 
-<%= simple_form_for @pickup_day do |f| %>
-  <%= f.input :scheduled_for, as: :date %>
-  <%= f.input :starts_at, as: :time %>
-  <%= f.input :ends_at, as: :time %>
-  <%= f.button :submit %>
-<% end %>
+<!-- Main content -->
+<section class="content">
+<!-- Default box -->
+  <div class="box">
+    <%= simple_form_for @pickup_day, wrapper: :inline_form, html: { class: 'form-inline date-time-select' } do |f| %>
+    <div class="box-body">
+        <div class="row">
+          <div class="col-xs-8 col-md-12 col-lg-12">
+            <%= f.input :scheduled_for, as: :date %>
+            <%= f.input :starts_at, as: :time, ampm: true, minute_step: 15  %>
+            <%= f.input :ends_at, as: :time, ampm: true, minute_step: 15  %>
+          </div>
+        </div>
+      <%= submit_button %>
+    <% end %>
+  </div><!-- /.box -->
+</section>
