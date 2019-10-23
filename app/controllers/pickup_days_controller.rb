@@ -21,9 +21,14 @@ class PickupDaysController < ApplicationController
     end
   end
 
-
   def update
+    @pickup_day = current_organization.pickup_days.find(params[:id])
 
+    if @pickup_day.update(pickup_day_params)
+      redirect_to pickup_days_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
