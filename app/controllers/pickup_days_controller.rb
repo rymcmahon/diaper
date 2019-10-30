@@ -1,6 +1,7 @@
 class PickupDaysController < ApplicationController
+
   def index
-    @pickup_days = current_organization.pickup_days.all
+    @pickup_days = current_organization.pickup_days.all.order(scheduled_for: :asc)
   end
 
   def new
